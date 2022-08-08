@@ -1,6 +1,9 @@
 # Objective
 - Learn how to setup Jenkins with Docker, and have it work with PyTest
 
+# Post-learning on the Process
+- https://medium.com/@BreakingLeft/abstract-learned-the-utility-of-docker-and-jenkins-and-how-to-combine-them-with-pytest-to-9b8cbb9b3a07
+
 # Resources used
 - #1: Currently following this example to learn:
     - https://medium.com/swlh/build-your-first-automated-test-integration-with-pytest-jenkins-and-docker-ec738ec43955
