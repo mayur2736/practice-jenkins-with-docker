@@ -3,17 +3,17 @@
 # This Dockerfile will be used by Jenkins to test.
 
 
-FROM python
+FROM redhat/ubi8
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+RUN yum -y install maven
 
-COPY /mypkg .
+COPY . .
 
 
-RUN ["pytest", "-v", "--suppress-tests-failed-exit-code", "--continue-on-collection-errors","--junitxml=reports/results.xml"]
+RUN mvn clean package 
 
 # Info on "--continue-on-collection-errors": https://stackoverflow.com/a/57003743
 # "--suppress-tests-failed-exit-code" is from plugin: https://pypi.org/project/pytest-custom-exit-code/
@@ -21,4 +21,4 @@ RUN ["pytest", "-v", "--suppress-tests-failed-exit-code", "--continue-on-collect
 
 
 # Info about "tail": https://www.geeksforgeeks.org/tail-command-linux-examples/
-CMD tail -f /dev/null
+# CMD tail -f /dev/null
